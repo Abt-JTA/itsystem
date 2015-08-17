@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from wiki.forms import *
 
-# Create your views here.
+
+def add_topic(request):
+
+    form = TopicForm()
+    context = {'form': form}
+
+    return render(request, 'wiki/add_topic.html', context)
