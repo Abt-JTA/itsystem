@@ -1,0 +1,14 @@
+{% if topic %}
+    <p>{{ topic.title }}</p>
+    <p>{{ topic.content }}</p>
+    <p>{{ topic.tags.names }}</p>
+
+    {% if similar_topics %}
+        <h3>Similar Topics</h3>
+        <ul>
+        {% for s_topic in similar_topics %}
+            <li>{{ s_topic.title }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}

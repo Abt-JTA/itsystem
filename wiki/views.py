@@ -29,3 +29,11 @@ def edit_topic(request, t_slug):
     context = {'form': form, 'success': success}
 
     return render(request, 'wiki/edit_topic.html', context)
+
+
+def view_topic(request, t_slug):
+    topic = Topic.objects.get(slug=t_slug)
+    similar_topics = topic.tags.similar_objects()
+    context = {'topic': topic, 'similar_topics': similar_topics}
+
+    return render(request, 'wiki/view_topic.html', context)
