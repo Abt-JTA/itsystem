@@ -4,7 +4,12 @@ from wiki.forms import *
 
 def add_topic(request):
 
-    form = TopicForm()
-    context = {'form': form}
+    if request.method == 'GET':
+        form = TopicForm()
+    else:
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            form.save()
 
+    context = {'form': form}
     return render(request, 'wiki/add_topic.html', context)
